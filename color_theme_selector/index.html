@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Theme Switch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="red">
+    <section>
+        <div class="theme">
+            <button data-theme-list="red" class="active"></button>
+            <button data-theme-list="green"></button>
+            <button data-theme-list="blue"></button>
+            <button data-theme-list="orange"></button>
+            <button data-theme-list="purple"></button>
+        </div>
+    </section>
+
+
+    <script>
+        let body = document.body;
+        let theme_btns = document.querySelectorAll(".theme button");
+
+        theme_btns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                theme_btns.forEach((element) => {
+                    element.classList.remove("active");
+                });
+
+                body.dataset.theme = btn.dataset.themeList;
+                btn.classList.add("active");
+            });
+        });
+    </script>
+</body>
+
+</html>
